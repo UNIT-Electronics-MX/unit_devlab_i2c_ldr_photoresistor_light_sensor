@@ -2,7 +2,7 @@
 
 UNIT Electronics creates and develops the DevLab board ecosystem, and this
 product belongs to its Atom family. Hardware V0.3.1 provides two development
-paths: Qwiic I2C through its onboard PY32F003 controller and direct analog observation
+paths: Qwiic I2C through its onboard microcontroller and direct analog observation
 through `SIG`.
 
 ## I2C bring-up

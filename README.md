@@ -1,6 +1,6 @@
 # DevLab: I2C GT36537 LDR Ambient Light Sensor
 
-The **DevLab I2C GT36537 LDR Ambient Light Sensor** is a small ambient light sensor module that contains the **GT36537 photoresistor (LDR)** and a **PY32F003 microcontroller**. This version has an **I2C interface** that allows the sensor signal to be captured, processed and accessed digitally from an I2C host using the DevLab Device Protocol (DDP), unlike a typical LDR module which only offers an analog output.
+The **DevLab I2C GT36537 LDR Ambient Light Sensor** is a small ambient light sensor module that contains the **GT36537 photoresistor (LDR)** and an onboard **microcontroller**. This version has an **I2C interface** that allows the sensor signal to be captured, processed and accessed digitally from an I2C host using the DevLab Device Protocol (DDP), unlike a typical LDR module which only offers an analog output.
 
 The module also includes a dedicated header for direct access to the **raw sensor signal**, allowing the GT36537 divider output to be used directly for analog measurements, testing, characterization or custom signal processing. The board has three I2C connections, which makes it easy to integrate with other DevLab modules and I2C based systems.
 
@@ -30,7 +30,7 @@ The module also includes a dedicated header for direct access to the **raw senso
 |---|---|
 | Sensor | GT36537 Ambient Light Sensor |
 | Sensor Type | Ambient light photoresistor (LDR) |
-| Onboard MCU | PY32F003, 32-bit Arm Cortex-M0+ |
+| Onboard MCU | 32-bit Arm Cortex-M0+ microcontroller |
 | Main Interface | I2C (DevLab Device Protocol, DDP 1.0) |
 | Raw Signal Access | Direct sensor signal available through dedicated header |
 | I2C Connectivity | 3 I2C connectors |
@@ -41,7 +41,7 @@ The module also includes a dedicated header for direct access to the **raw senso
 
 ## How It Works
 
-The **GT36537** photoresistor (LDR) changes resistance according to the incident ambient light level. Wired as a voltage divider, its midpoint is read by the onboard **PY32F003 microcontroller** through a 12-bit ADC input, updated roughly every 20 ms.
+The **GT36537** photoresistor (LDR) changes resistance according to the incident ambient light level. Wired as a voltage divider, its midpoint is read by the onboard **microcontroller** through a 12-bit ADC input, updated roughly every 20 ms.
 
 The microcontroller makes the resulting reading available through the **I2C interface** using the DevLab Device Protocol (DDP): the module answers as DDP Device ID `0x0106` at the factory I2C address `0x26`.
 

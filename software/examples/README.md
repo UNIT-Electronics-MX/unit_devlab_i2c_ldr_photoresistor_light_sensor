@@ -1,7 +1,7 @@
 # UNIT DevLab GT36537 LDR light sensor — examples
 
 Choose the interface first. The `i2c/` examples talk to the module's onboard
-PY32F003 controller over the DevLab Device Protocol (DDP); the `adc/` example
+microcontroller over the DevLab Device Protocol (DDP); the `adc/` example
 reads the module's separate direct `SIG` contact instead. They are kept in
 different trees so wiring and host-pin assumptions are not mixed.
 

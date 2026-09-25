@@ -24,7 +24,7 @@
 | **Raw Signal Access** | Dedicated RAW Signal Header |
 | **I2C Connectors** | 3 × JST 4-pin, 1.0 mm pitch |
 | **I2C Lines** | SDA, SCL |
-| **Onboard MCU** | PY32F003L24D6TR |
+| **Onboard MCU** | Microcontroller |
 | **I2C Pull-ups** | 10 kΩ |
 | **Status Indicators** | Power LED and User LED |
 | **Debug / Test** | Dedicated test points |
@@ -153,7 +153,7 @@ complete UE0098 module.
 | Ref. | Description |
 |------|-------------|
 | TEMT6000 | Ambient Light Sensor |
-| IC1 | PY32F003L24D6TR I2C Driver / |
+| IC1 | Microcontroller, I2C Driver / |
 | J1, J3, J4 | I2C JST 4-pin, 1.0 mm pitch connectors |
 | J2 | RAW Signal Header |
 | PWR | Power status LED |
@@ -170,7 +170,7 @@ The module uses the following signal architecture:
 **TEMT6000 → Raw Sensor Signal → microcontroller → I2C**
 
 The TEMT6000 generates an analog signal according to the incident light
-level. This signal is acquired by the onboard PY32F003,
+level. This signal is acquired by the onboard microcontroller,
 which can process the sensor information and expose it through the I2C
 interface.
 

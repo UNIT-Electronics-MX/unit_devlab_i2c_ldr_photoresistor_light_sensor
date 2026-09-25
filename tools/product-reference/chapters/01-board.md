@@ -1,9 +1,16 @@
 ## **1 The Board**
 
-The design supports two host paths. A Qwiic-capable controller can attach
-through the I2C positions, while an ADC-capable host or test instrument can
-sample the exposed `SIG` contact directly. Factory programming and debugging
-reuse the I2C signals; they are not a separate user interface.
+The design supports two host paths. An I2C-capable controller can attach
+through any of the three I2C connectors, while a host or test instrument with
+an analog input can sample the dedicated RAW Signal Header directly. The
+GT36537 photoresistor (LDR) is wired as a voltage divider; its midpoint is
+read by the onboard microcontroller and made available through the I2C
+interface, and remains separately available as an unprocessed analog signal
+on the RAW Signal Header.
+
+Detailed mechanical, pinout, and schematic assets for this GT36537 revision
+are still pending publication. The values in this chapter reflect the current
+confirmed design; items not yet released are marked accordingly.
 
 ### **1.1 Accessories** {.section-page}
 
@@ -11,16 +18,16 @@ The module is supplied with a Qwiic-compatible cable for connection to the I2C i
 
 | Accessory | Purpose | Selection notes |
 |---|---|---|
-| JST/Qwiic-compatible cable | Connects `GND`, `VCC`, `SDA`, and `SCL` | Verify 1.00 mm pitch, connector orientation, and contact order against the populated connector |
+| JST/Qwiic-compatible cable | Connects `GND`, `VCC`, `SDA`, and `SCL` | Connector pitch and orientation for this GT36537 revision are pending publication; verify against the populated connector before use |
 
-### **1.2 Recommended Test Equipment** 
+### **1.2 Recommended Test Equipment**
 
 The following equipment may be used for integration, testing, and validation. These items are not included with the module.
 
 | Equipment | Purpose | Selection notes |
 |---|---|---|
-| I2C-capable host | Scans and communicates with the module | Use 7-bit addressing and an I2C clock from 100 kHz through 400 kHz |
-| Analog test lead or carrier | Provides access to `VCC`, `GND`, and `SIG` | `SIG` must connect to a voltage-compatible ADC input |
+| I2C-capable host | Scans and communicates with the module | Use 7-bit addressing over the DevLab Device Protocol (DDP) |
+| Analog test lead or carrier | Provides access to `VCC`, `GND`, and `SIGNAL` on the RAW Signal Header | `SIGNAL` must connect to a voltage-compatible ADC input |
 | Logic analyzer | Checks I2C communication activity | Use input thresholds compatible with the powered board |
 | Reference lux meter | Supports optical calibration and validation | Required for quantitative illuminance validation |
 
@@ -28,16 +35,15 @@ The following equipment may be used for integration, testing, and validation. Th
 
 | Item | Value |
 |---|---|
-| Product | UNIT ATOM TEMT6000 Ambient Light Sensor |
+| Product | DevLab I2C GT36537 LDR Ambient Light Sensor |
 | Brand / company | UNIT Electronics |
 | Board ecosystem | DevLab |
-| Product family | Atom |
-| Product type | I2C-compatible and direct-analog ambient-light module |
-| Optical component | TEMT6000 |
-| Interface controller | 32-bit Arm Cortex-M0+; 16 KB Flash and 2 KB SRAM |
-| Manufacturer Part Number (MPN) | UE0098 |
-| Current board artwork | |
-| Product Reference | Version 1.1.0 |
+| Product type | I2C-compatible ambient-light module with direct raw-signal access |
+| Optical component | GT36537 photoresistor (LDR), wired as a voltage divider |
+| Interface controller | 32-bit Arm Cortex-M0+ microcontroller; exact fitted part pending confirmation |
+| Manufacturer Part Number (MPN) | Pending |
+| Current board artwork | Pending |
+| Product Reference | Pending — this chapter reflects the GT36537 revision in progress |
 
 Board, pinout, schematic, and documentation revisions are controlled
 independently.
@@ -46,64 +52,33 @@ independently.
 
 | Component / Feature | Function | Implementation / Notes |
 |---|---|---|
-| TEMT6000 sensor | Converts visible light to photocurrent | Primary ambient-light sensing element |
-| Interface controller | Samples and processes the sensor signal for I2C access | 32-bit Arm Cortex-M0+ with 16 KB Flash and 2 KB SRAM |
-| I2C connections | Provide module power and I2C bus access | `J1` is populated by default; `J3` and `J4` support optional horizontal 4-pin, 1.00 mm-pitch JST/Qwiic-compatible connectors |
-| Direct contacts | Provide direct access to `VCC`, `GND`, and analog `SIG` | Intended for analog signal access and external ADC measurement |
-| I2C disable bridge | Allows the I2C interface to be disabled | Cut `JP1` to disable I2C operation |
-| Power indicator | Indicates that the board is powered | Onboard `PWR` indicator |
-| Built-in status indicator | Provides firmware-controlled status indication | Onboard `USR_LED` indicator |
-| Reserved expansion pads | Provide connections reserved for future expansion | No user function is currently assigned |
-| Factory service functions | Support controller programming, debugging, and reset | Reserved for manufacturer use; programming signals share the I2C interface |
+| GT36537 photoresistor (LDR) | Changes resistance with incident visible light | Wired as a voltage divider; primary ambient-light sensing element |
+| Onboard microcontroller | Reads the divider signal through its ADC and manages I2C communication | 32-bit Arm Cortex-M0+; exact fitted part pending confirmation |
+| I2C connectors | Provide module power and I2C bus access | Three connectors, all wired to the same bus |
+| RAW Signal Header | Provides direct access to `VCC`, `GND`, and the unprocessed sensor `SIGNAL` | Independent of the I2C interface; intended for analog measurement, testing, and characterization |
+| Power indicator | Indicates that the board is powered | Onboard power LED |
+| User / status indicator | Provides firmware-controlled status indication | Onboard status LED |
+| Test points | Support debug and validation | Dedicated test points; assignment pending detailed publication |
 
 ### **1.5 Board Layout and Reference Designators** {.section-page}
 
-![](../../../hardware/resources/unit_topology_v_3_1_0_ue0098_temt6000_ambient_light_sensor.png){width=7.0in}
+Board-layout artwork, component placement, and reference designators for this
+GT36537 revision are still pending publication. The topology, top-view, and
+bottom-view images previously published for this repository belong to the
+prior TEMT6000 (UE0098) hardware revision and must not be used as a layout
+reference for the GT36537 module. This section will be completed once the
+corresponding hardware assets are released.
 
-**Figure 1.1 — Location of components and reference designators on the top and
-bottom sides of the PCB.**
+Refer to Chapter 4 for user connections once the released schematic and
+pinout are available.
 
-This drawing is a component-location reference. It helps locate parts named in
-the schematic and in the table below; it does not define connector pin order
-or indicate that every connector footprint is populated.
+### **1.6 Board Views** {.section-page}
 
-The top side contains the TEMT6000 sensor (`Q1`), interface controller (`IC1`),
-direct `VCC`/`GND`/`SIG` contacts (`J2`), and the I2C connector installed by
-default (`J1`). The bottom side provides two additional footprints, `J3` and
-`J4`, for optional horizontal I2C connectors. `J1`, `J3`, and `J4` carry the
-same `GND`, `VCC`, `SDA`, and `SCL` signals and provide access to the same I2C
-bus.
+Top- and bottom-view images for this GT36537 revision are pending
+publication. A product photo and board-view images will be added once the
+corresponding hardware assets are available.
 
-The drawing also locates the I2C-disable bridge (`JP1`), the power and status
-indicators, and factory test points. Refer to Chapter 4 for user connections
-and to the released schematic for circuit-level information.
+### **1.7 Handling** {.section-page}
 
-| Ref. | Description |
-|---|---|
-| `Q1` | TEMT6000 ambient-light sensor |
-| `IC1` | Onboard interface controller |
-| `J1` | Factory-populated 4-pin, 1.00 mm-pitch I2C connector |
-| `J3`, `J4` | Two optional horizontal 4-pin, 1.00 mm-pitch I2C connector positions |
-| `J2` | Direct `VCC`/`GND`/`SIG` contacts |
-| `JP1` | Cuttable bridge for disabling I2C operation |
-| `PWR` | Power indicator |
-| `USR_LED` | Built-in status indicator |
-| `TP1`–`TP7` | Factory test points |
-
-### **1.5 Board Views** {.section-page}
-
-![](../../../hardware/resources/unit_top_v_0_3_1_ue0098_temt6000.png){width=2.35in}
-
-The top view shows the direct sensor contacts, controller, sensor, mounting
-hole, indicator circuitry, and the factory-populated I2C connector.
-
-![](../../../hardware/resources/unit_btm_v_0_3_1_ue0098_temt6000.png){width=2.35in}
-
-The bottom view shows the I2C connection points, reserved expansion pads,
-factory service markings, and the optional horizontal connector positions.
-The I2C signals are shared with the controller's factory programming and
-debugging interface; there is no separate user-accessible SWD connector.
-
-### **1.6 Handling** {.section-page}
-
-Use normal ESD precautions. Keep the transparent sensor package clean and optically unobstructed. Remove power before changing connectors or modifying the I2C solder bridge.
+Use normal ESD precautions. Keep the sensor surface clean and optically
+unobstructed. Remove power before changing connectors.
