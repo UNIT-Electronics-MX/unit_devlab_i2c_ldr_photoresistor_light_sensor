@@ -1,13 +1,13 @@
-# DevLab: I2C TEMT6000 Ambient Light Sensor
+# DevLab: I2C GT36537 LDR Ambient Light Sensor
 
-The **DevLab I2C TEMT6000 Ambient Light Sensor** is a small ambient light sensor module that contains the **TEMT6000 phototransistor** and a **microcontroller**.This version has a **I2C interface** that allows the sensor signal to be captured, processed and accessed digitally from an I2C host, unlike a typical TEMT6000 module which only offers an analog output.
+The **DevLab I2C GT36537 LDR Ambient Light Sensor** is a small ambient light sensor module that contains the **GT36537 photoresistor (LDR)** and a **PY32F003 microcontroller**. This version has an **I2C interface** that allows the sensor signal to be captured, processed and accessed digitally from an I2C host using the DevLab Device Protocol (DDP), unlike a typical LDR module which only offers an analog output.
 
-The module also includes a dedicated header for direct access to the **raw sensor signal** allowing the TEMT6000 output to be used directly for analog measurements, testing, characterization or custom signal processing. The board has three I2C connections, which makes it easy to integrate with other DevLab modules and I2C based systems.
+The module also includes a dedicated header for direct access to the **raw sensor signal**, allowing the GT36537 divider output to be used directly for analog measurements, testing, characterization or custom signal processing. The board has three I2C connections, which makes it easy to integrate with other DevLab modules and I2C based systems.
 
 
 <div align="center">
 
-  <img src="hardware/resources/unit_top_v_0_3_1_ue0098_temt6000.png" width="300px" alt="DevLab I2C TEMT6000 Ambient Light Sensor">
+*(Product photo pending — the GT36537 hardware asset has not been provided yet)*
 
 </div>
 
@@ -16,10 +16,10 @@ The module also includes a dedicated header for direct access to the **raw senso
 
 ### Quick Setup
 
-[<img src="https://img.shields.io/badge/Product%20Wiki-blue?style=for-the-badge" alt="Product Wiki">](https://wiki.uelectronics.com/wiki/devlab-temt6000-ambient-light-sensor)
-[<img src="https://img.shields.io/badge/Datasheet-green?style=for-the-badge" alt="Datasheet">](https://github.com/UNIT-Electronics-MX/unit_devlab_temt6000_ambient_light_sensor/blob/main/hardware/unit_datasheet_v_1_0_0_ue0098_temt6000_ambient_light_sensor_en.pdf)
+<img src="https://img.shields.io/badge/Product%20Wiki-pending-lightgrey?style=for-the-badge" alt="Product Wiki (pending)">
+<img src="https://img.shields.io/badge/Datasheet-pending-lightgrey?style=for-the-badge" alt="Datasheet (pending)">
 [<img src="https://img.shields.io/badge/Buy%20Now-orange?style=for-the-badge" alt="Buy Now">](https://uelectronics.com/)
-[<img src="https://img.shields.io/badge/Getting%20Started-purple?style=for-the-badge" alt="Getting Started">](https://github.com/UNIT-Electronics-MX/unit_devlab_temt6000_ambient_light_sensor/tree/main/software)
+[<img src="https://img.shields.io/badge/Getting%20Started-purple?style=for-the-badge" alt="Getting Started">](https://github.com/UNIT-Electronics-MX/unit_devlab_i2c_ldr_photoresistor_light_sensor/tree/main/software)
 
 </div>
 
@@ -28,10 +28,10 @@ The module also includes a dedicated header for direct access to the **raw senso
 
 | Feature | Description |
 |---|---|
-| Sensor | TEMT6000 Ambient Light Sensor |
-| Sensor Type | Ambient light phototransistor |
-| Onboard MCU | 32-bit Arm Cortex-M0+ |
-| Main Interface | I2C |
+| Sensor | GT36537 Ambient Light Sensor |
+| Sensor Type | Ambient light photoresistor (LDR) |
+| Onboard MCU | PY32F003, 32-bit Arm Cortex-M0+ |
+| Main Interface | I2C (DevLab Device Protocol, DDP 1.0) |
 | Raw Signal Access | Direct sensor signal available through dedicated header |
 | I2C Connectivity | 3 I2C connectors |
 | Status Indicators | Power and user/status LEDs |
@@ -41,19 +41,16 @@ The module also includes a dedicated header for direct access to the **raw senso
 
 ## How It Works
 
-The **TEMT6000** phototransistor generates a signal according to the incident ambient light level.
+The **GT36537** photoresistor (LDR) changes resistance according to the incident ambient light level. Wired as a voltage divider, its midpoint is read by the onboard **PY32F003 microcontroller** through a 12-bit ADC input, updated roughly every 20 ms.
 
-This signal is connected directly to the onboard **microcontroller**, which can acquire and process the sensor output and make the resulting information available through the **I2C interface**.
+The microcontroller makes the resulting reading available through the **I2C interface** using the DevLab Device Protocol (DDP): the module answers as DDP Device ID `0x0106` at the factory I2C address `0x26`.
 
-The board also exposes the sensor signal through the **RAW Signal Header**, allowing direct access to the unprocessed TEMT6000 output independently of the I2C interface.
+The board also exposes the sensor signal through the **RAW Signal Header**, allowing direct access to the unprocessed GT36537 divider output independently of the I2C interface.
 
 This architecture provides two ways to work with the sensor:
 
 - **I2C interface:** Easy digital integration with microcontrollers and other I2C systems.
 - **RAW signal:** Direct access to the sensor output for analog measurements, testing, or custom processing.
-
-
-
 
 
 ## Use Cases
@@ -71,11 +68,16 @@ This architecture provides two ways to work with the sensor:
 
 ## Resources
 
-- [Schematic Diagram](https://github.com/UNIT-Electronics-MX/unit_devlab_temt6000_ambient_light_sensor/blob/main/hardware/unit_sch_v_2_0_0_ue0098_temt6000.pdf)
+> Schematic, pinout and dimension diagrams for the GT36537 revision of this
+> board are pending. The `docs/hardware/` and `hardware/` files currently in
+> this repository still belong to the previous TEMT6000 revision and should
+> **not** be used as a reference for this board — they will be replaced once
+> the GT36537 hardware assets are available.
 
-- [Pinout Diagram](https://github.com/UNIT-Electronics-MX/unit_devlab_temt6000_ambient_light_sensor/blob/main/hardware/unit_pinout_v_0_0_2_ue0098_temt6000_ambient_light_sensor_en.pdf)
-
-- [Datasheet](https://github.com/UNIT-Electronics-MX/unit_devlab_temt6000_ambient_light_sensor/blob/main/hardware/unit_datasheet_v_1_0_0_ue0098_temt6000_ambient_light_sensor_en.pdf)
+- Firmware: [`unit_firmware_i2c_gt36537_py32`](https://github.com/UNIT-Electronics-Labs/unit_firmware_i2c_gt36537_py32)
+- Arduino library: [`unit_devlab_gt36537_library`](https://github.com/UNIT-Electronics-MX/unit_devlab_gt36537_library) (`DevLab_GT365xx`)
+- Protocol: [`DevLabDDP`](https://github.com/UNIT-Electronics-MX/unit_devlab_ddp_library)
+- [Software examples in this repository](software)
 
 
 ## License
