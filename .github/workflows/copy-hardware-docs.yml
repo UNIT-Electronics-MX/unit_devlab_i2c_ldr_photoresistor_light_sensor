@@ -1,0 +1,116 @@
+name: Build Product Reference and Hardware Documentation
+
+on:
+  push:
+    branches: [ '**' ]
+    paths:
+      - 'README.md'
+      - 'hardware/**'
+      - 'software/**'
+      - 'tools/product-reference/**'
+      - '.github/scripts/**'
+      - '.github/workflows/copy-hardware-docs.yml'
+  pull_request:
+    paths:
+      - 'README.md'
+      - 'hardware/**'
+      - 'software/**'
+      - 'tools/product-reference/**'
+      - '.github/scripts/**'
+      - '.github/workflows/copy-hardware-docs.yml'
+  workflow_dispatch: # Permite ejecutar manualmente
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-and-publish-docs:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pages: read
+      pull-requests: write
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v6
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Set up Python
+      uses: actions/setup-python@v6
+      with:
+        python-version: '3.12'
+
+    - name: Install document build tools
+      run: |
+        # The PDF is rendered with WeasyPrint. Disable the preconfigured
+        # Google Chrome repository so a transient CDN index mismatch cannot
+        # block installation of the required Ubuntu packages.
+        sudo rm -f \
+          /etc/apt/sources.list.d/google-chrome.list \
+          /etc/apt/sources.list.d/google-chrome.sources
+        sudo apt-get update
+        sudo apt-get install --yes pandoc fonts-noto-core fonts-noto-mono
+        python -m pip install --upgrade pip
+        python -m pip install weasyprint
+
+    - name: Build product reference from Markdown
+      run: |
+        chmod +x tools/product-reference/build.sh
+        tools/product-reference/build.sh
+
+    - name: Clean previous documentation
+      run: |
+        chmod +x .github/scripts/clean_docs.sh
+        .github/scripts/clean_docs.sh
+
+    - name: Publish hardware files and product reference under docs/hardware
+      run: |
+        chmod +x .github/scripts/build_docs.sh
+        .github/scripts/build_docs.sh
+
+    - name: Configure GitHub Pages
+      if: github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
+      uses: actions/configure-pages@v5
+
+    - name: Upload GitHub Pages artifact
+      if: github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
+      uses: actions/upload-pages-artifact@v4
+      with:
+        path: docs
+
+    - name: Commit generated documentation
+      if: github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add docs/
+        if ! git diff --cached --quiet; then
+          git commit -m "Auto-update hardware documentation"
+          git push origin HEAD:main
+        else
+          echo "No changes to commit"
+        fi
+
+  deploy-pages:
+      if: github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
+      needs: build-and-publish-docs
+      runs-on: ubuntu-latest
+      permissions:
+        contents: read
+        pages: write
+        id-token: write
+      environment:
+        name: github-pages
+        url: ${{ steps.deployment.outputs.page_url }}
+
+      steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
