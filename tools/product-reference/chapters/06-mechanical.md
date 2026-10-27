@@ -9,14 +9,12 @@ shown below. Dimensions are in millimetres.
 
 **Figure 6.1 — Board dimensions.**
 
-The drawing specifies a 27 mm × 10 mm board outline and a 3 mm mounting hole.
-It also shows the hole centerline 5 mm from the side edge and 10.8 mm from the
-connector-end edge. Use the drawing itself as the dimensional reference; do
+Use the drawing itself as the dimensional reference; do
 not derive additional dimensions by scaling the image.
 
 ### **6.2 Integration Clearances** {.section-page}
 
-Leave optical clearance around the transparent TEMT6000 sensor package and its
+Leave optical clearance around the GT36537 LDR sensing surface and its
 field of view. Provide connector insertion and cable bend clearance at the
 populated I2C connector and at any optional connector position that will be
 assembled. Keep conductive fasteners away from contacts and factory service

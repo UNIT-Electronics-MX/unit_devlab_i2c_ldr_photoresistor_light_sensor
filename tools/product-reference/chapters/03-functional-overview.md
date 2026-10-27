@@ -1,11 +1,11 @@
 ## **3 Functional Overview**
 
-The UNIT ATOM TEMT6000 combines an ambient-light phototransistor with an
-onboard controller. The module provides two ways to observe light level:
-digital readings over I2C and direct access to the analog sensor signal at
-`SIG`.
+The DevLab I2C GT36537 LDR Ambient Light Sensor combines a GT36537
+photoresistor (LDR), wired as a voltage divider, with an onboard controller.
+The module provides two ways to observe light level: digital readings over
+I2C and direct access to the analog sensor signal at `SIGNAL`.
 
-The TEMT6000 itself is an analog device. The onboard controller samples its
+The GT36537 LDR itself is an analog device. The onboard controller samples its
 output, applies the selected averaging, and provides the latest raw reading
 through DevLab Device Protocol (DDP) v1.0.
 
@@ -14,15 +14,15 @@ through DevLab Device Protocol (DDP) v1.0.
 ![](../assets/block_diagram.png){width=7.1in}
 
 **Figure 3.1 — Functional signal and control paths.** Ambient light changes the
-TEMT6000 output. The signal is available at `SIG` and is also acquired by the
-controller ADC for access over I2C.
+LDR divider output. The signal is available at `SIGNAL` and is also acquired by
+the controller ADC for access over I2C.
 
 ### **3.2 Operating Modes**
 
 | Mode | Connection | User-visible result |
 |---|---|---|
 | Digital I2C | `VCC`, `GND`, `SDA`, and `SCL` | Averaged 12-bit raw light reading through DDP |
-| Direct analog | `VCC`, `GND`, and `SIG` | Light-dependent voltage for a host ADC or measurement instrument |
+| Direct analog | `VCC`, `GND`, and `SIGNAL` | Light-dependent voltage for a host ADC or measurement instrument |
 
 Both modes observe the same sensor path. An I2C read returns the latest
 available sample; it does not trigger a new light measurement. The direct
@@ -31,9 +31,9 @@ application-specific calibration.
 
 ### **3.3 Digital Light Measurement** {.page-break}
 
-The onboard ADC produces an unsigned 12-bit value. A higher value represents a
-higher sensor output under the actual supply, optical, and mechanical
-conditions.
+The onboard ADC produces an unsigned 12-bit value. Whether the value rises or
+falls with more light depends on which end of the voltage divider carries the
+LDR, under the actual supply, optical, and mechanical conditions.
 
 | Measurement property | Value |
 |---|---:|
@@ -73,14 +73,14 @@ the final byte.
 
 | Communication property | Value |
 |---|---|
-| Factory 7-bit address | `0x20` |
+| Factory 7-bit address | `0x26` |
 | Configurable address range | `0x08..0x77` |
 | I2C clock | 100 kHz to 400 kHz |
 | Delay before response read | 2–5 ms; use 5 ms conservatively |
 | Byte order for multi-byte values | Little endian |
 | Supported response lengths | 1, 2, or 4 bytes, depending on the selected function |
 
-Pass `0x20` directly to an I2C library. Values `0x40` and `0x41` are the
+Pass `0x26` directly to an I2C library. Values `0x4C` and `0x4D` are the
 shifted write/read address bytes visible on the bus, not the 7-bit address used
 by typical host APIs.
 
@@ -88,12 +88,12 @@ by typical host APIs.
 
 | User function | DDP selector | Result |
 |---|---:|---|
-| Identify the module | `0x00` | Device ID `0x0102` |
+| Identify the module | `0x00` | Device ID `0x0106` |
 | Read protocol version | `0x04` | DDP version 1.0 |
 | Read active I2C address | `0x20` | Current 7-bit address |
 | Change I2C address | `0x21` | Stores and applies a new address in the valid range |
 | Restore factory configuration | `0x23` | Restores default configuration; reset required |
-| Read ambient-light data | `0x60` or `0x80` | Latest two-byte 12-bit raw sample |
+| Read ambient-light data | `0x60` | Latest two-byte 12-bit raw sample |
 | Set ADC averaging | `0x62` | Selects 1, 4, 8, 16, or 24 samples |
 | Read ADC averaging | `0x63` | Returns the active averaging setting |
 | Turn `BUILTIN` off/on | `0xA0` / `0xA1` | Drives the built-in indicator LOW/HIGH |
@@ -119,7 +119,7 @@ timed pulse runs without interrupting light measurements or I2C communication.
 
 ### **3.7 Physical Interface Notes** {.section-page}
 
-The `SIG` contact provides direct access to the analog sensor path. Its
+The `SIGNAL` contact provides direct access to the analog sensor path. Its
 complete board-level transfer function, source impedance, and guaranteed
 output range are not specified for the current revision. Use a high-impedance
 input and verify the actual range before connecting it to a lower-voltage ADC.

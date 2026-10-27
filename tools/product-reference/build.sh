@@ -7,7 +7,7 @@ REFERENCE_DOC="$PROJECT_DIR/tools/product-reference/reference-a4.docx"
 HTML_TEMPLATE="$PROJECT_DIR/tools/product-reference/templates/product-reference.html"
 HTML_STYLESHEET="$PROJECT_DIR/tools/product-reference/styles/product-reference.css"
 OUTPUT_DIR="${1:-$PROJECT_DIR/build/product-reference}"
-OUTPUT_BASENAME="unit_product_reference_v_1_1_0_atom_temt6000_ambient_light_sensor"
+OUTPUT_BASENAME="unit_product_reference_v_1_0_0_atom_gt36537_ldr_ambient_light_sensor"
 
 if ! command -v pandoc >/dev/null 2>&1; then
   echo "Error: required command not found: pandoc" >&2
