@@ -5,8 +5,6 @@ shown below. Dimensions are in millimetres.
 
 ### **6.1 Board Dimensions** {.section-page}
 
-![](../../../docs/hardware/resources/unit_dimensions_v_3_1_0_ue0098_temt6000_ambient_light_sensor.png){width=7.0in}
-
 **Figure 6.1 — Board dimensions.**
 
 Use the drawing itself as the dimensional reference; do

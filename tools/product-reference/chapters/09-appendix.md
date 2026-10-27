@@ -6,8 +6,6 @@ The schematic documents the controller-based board, including the reference
 controller, LDR analog stage, I2C interfaces, status indicators, test points,
 and optional connectors.
 
-![](../../../docs/hardware/resources/unit_schematic_v_2_0_0_ue0098_temt6000.png){width=7.0in}
-
 **Figure 9.1 — Electrical schematic.**
 
 The LDR divider signal is routed to the controller ADC input and the external
