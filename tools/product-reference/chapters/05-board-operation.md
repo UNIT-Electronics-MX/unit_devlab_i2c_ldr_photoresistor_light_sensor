@@ -20,9 +20,9 @@ Sensor and read its raw ambient-light value with Arduino. The examples use the
 3. Select the current release and click **Install**.
 
 The library implements DDP v1.0 and uses DevLab Interface for I2C bus
-management, integrated in the library itself. The sketch only includes
-`DevLab_GT365xx.h`; no separate bus-handling or bus-recovery library is
-needed. A screenshot of the library in Arduino Library Manager is pending.
+management. Its dependencies, `DevLabDDP` and `DevLab_Interface`, are installed
+together with it, so the sketch only includes `DevLab_GT365xx.h` and does not
+need separate bus-handling or bus-recovery code.
 
 ### **5.3 I2C Connection and Example Settings** {.page-break}
 
@@ -134,12 +134,14 @@ void loop() {
 The complete example also supports AVR hosts, where `Serial.printf()` is not
 available and the output is printed with `Serial.print()` instead.
 
-Two companion examples are provided:
+The following companion examples are provided:
 
 | Example | Purpose |
 |---|---|
 | `serialLightReadInverted` | Reports `4095 - raw` with `readInvertRaw()` and `readInvertPercentage()` so that the value rises with more light |
 | `serialLightRawPlot` | Streams one raw integer per line at 115200 baud for the Arduino Serial Plotter or `python/serial_plotter.py` |
+| `i2c_scanner` | Scans the I2C bus at 115200 baud and prints the 7-bit address of every device that responds; a detected address only confirms that a device acknowledged, not that it is a GT36537 |
+| `changeAddress` | Serial tool at 115200 baud to scan for DDP devices and reassign the module address (factory address `0x26`), for example `scan` or `change 26 30` |
 
 ### **5.5 Upload and Serial Output** {.section-page}
 

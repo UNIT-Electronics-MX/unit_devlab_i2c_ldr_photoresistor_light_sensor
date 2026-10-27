@@ -12,7 +12,7 @@
 | Board bottom view | -- |
 | Current schematic | -- |
 | Software examples | [C++ (Arduino)](https://github.com/UNIT-Electronics-MX/unit_devlab_i2c_ldr_photoresistor_light_sensor/tree/main/software/examples) |
-| Arduino library | `DevLab_GT365xx` |
+| Arduino library | [UNIT-Electronics-MX/unit_devlab_gt365xx_library](https://github.com/UNIT-Electronics-MX/unit_devlab_gt365xx_library) |
 | Local DDP device profile | [GT36537 DDP profile](https://github.com/UNIT-Electronics-MX/unit_devlab_i2c_ldr_photoresistor_light_sensor/blob/main/software/protocol/README.md) |
 | Canonical DDP definitions and Arduino library | [UNIT-Electronics-Labs/unit_devlab_ddp_library](https://github.com/UNIT-Electronics-Labs/unit_devlab_ddp_library) |
 | Component page | -- |

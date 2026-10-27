@@ -104,8 +104,35 @@ The I2C address, averaging selection, and pulse duration are retained after a
 power cycle. Changing a stored value should be an occasional configuration
 operation rather than part of the normal measurement loop.
 
-Detailed transaction handling is already implemented by the maintained C++
-and MicroPython examples listed in Chapter 8.
+Detailed transaction handling is implemented by the `DevLab_GT365xx` Arduino
+library listed in Chapter 8, which uses DevLab Interface for I2C bus
+management.
+
+#### **Arduino Library Functions**
+
+All functions belong to the `DevLab_GT365xx` class. Functions that return
+`bool` return `true` on success. Readings are taken with the DDP read-ADC
+command (`0x60`) and are only available after a successful `begin` call.
+
+| Function | Description |
+|---|---|
+| `DevLab_GT365xx(wire, address, clock)` | Constructor. Defaults: `Wire`, address `0x26`, 400000 Hz |
+| `begin()` | Starts the I2C bus on the host's default pins and verifies the GT36537 Device ID |
+| `begin(sdaPin, sclPin, clock)` | Same as `begin()`, selecting the SDA/SCL pins and I2C clock |
+| `beginRecovered(sdaPin, sclPin, timeoutUs, restart)` | Starts the bus with bus recovery before verifying the Device ID. Defaults: `timeoutUs` 20000, `restart` false |
+| `readRaw(rawValue)` | Latest 12-bit ADC reading, `0` to `4095` |
+| `readPercentage(percentage)` | Raw reading as a percentage, `raw × 100 / 4095` |
+| `readInvertRaw(invertedValue)` | Inverted 12-bit reading, `4095 − raw` |
+| `readInvertPercentage(percentage)` | Inverted reading as a percentage |
+| `busReady()` | `true` if the I2C bus was started successfully |
+| `isConnected()` | `true` if the GT36537 Device ID was verified at the configured address |
+| `deviceInfo()` | Identity information read during `begin` |
+| `printInfo(out)` | Prints the device information to a `Print` stream (default `Serial`) |
+| `protocol()` | Access to the underlying DDP master for direct commands |
+| `bus()` | Access to the underlying DevLab Interface bus object |
+
+The inverted functions are useful when the reading falls as light increases,
+which depends on which end of the voltage divider carries the LDR.
 
 ### **3.6 Built-In Indicator**
 
