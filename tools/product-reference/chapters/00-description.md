@@ -31,6 +31,6 @@ Connector pitch, mechanical drawings, and supply-voltage limits for this GT36537
 - Power and user/status indicators
 - Dedicated test points for debug
 
-The controller implements DevLab Device Protocol (DDP) v1.0. The GT36537 profile is identified by Device ID `0x0106`, and the factory I2C address is `0x26`.
+The controller implements DevLab Device Protocol (DDP) v1.0, using DevLab Interface for I2C bus management. DevLab Interface is integrated into the module's own library, so no separate bus-handling code is required. The GT36537 profile is identified by Device ID `0x0106`, and the factory I2C address is `0x26`.
 
 Detailed electrical ratings, mechanical dimensions, and pinout diagrams for this GT36537 revision are still pending and will be published once the corresponding hardware assets are available.
