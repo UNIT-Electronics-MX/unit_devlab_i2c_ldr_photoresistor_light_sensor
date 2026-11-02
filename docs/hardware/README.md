@@ -29,7 +29,9 @@ A dedicated functional block diagram is not included in the available product-sp
 
 ![UE0164 bottom view](resources/unit_btm_v_1_0_ue0164_i2c_ldr_light_sensor_3d.png)
 
-A product-specific electrical schematic is not included in the available files.
+### Schematic
+
+[UE0164 Rev 1.0.0 schematic](unit_sch_v_1_0_0_ue0164_devlab_i2c_ldr_sensor.pdf)
 
 ## Pinout
 
@@ -73,5 +75,6 @@ The GT36537 light-dependent resistor is read through an onboard controller over 
 
 - [Product Reference](../docs/hardware/unit_product_reference_v_1_1_0_ue0164_i2c_ldr_photoresistor_light_sensor.pdf)
 - [Product Reference source](../tools/product-reference/README.md)
+- [Electrical schematic](unit_sch_v_1_0_0_ue0164_devlab_i2c_ldr_sensor.pdf)
 - [English pinout](./unit_pinout_v_1_0_ue0164_i2c_ldr_photoresistor_light_sensor_en.pdf)
 - [Spanish pinout](./unit_pinout_v_1_0_ue0164_i2c_ldr_photoresistor_light_sensor_es.pdf)
