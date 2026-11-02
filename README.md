@@ -1,4 +1,4 @@
-# DevLab: I2C GT36537 LDR Ambient Light Sensor — MPN: UE0164
+# DevLab: I2C GT36537 LDR Ambient Light Sensor
 
 The **DevLab I2C GT36537 LDR Ambient Light Sensor** is a small ambient light sensor module that contains the **GT36537 photoresistor (LDR)** and an onboard **microcontroller**. This version has an **I2C interface** that allows the sensor signal to be captured, processed and accessed digitally from an I2C host using the DevLab Device Protocol (DDP), unlike a typical LDR module which only offers an analog output.
 
