@@ -1,41 +1,27 @@
 ## **9 Appendix**
 
-### **9.1 Current Schematic** {.section-page}
+### **9.1 Schematic Status** {.section-page}
 
-The schematic documents the controller-based board, including the reference
-controller, LDR analog stage, I2C interfaces, status indicators, test points,
-and optional connectors.
-
-**Figure 9.1 — Electrical schematic.**
-
-The LDR divider signal is routed to the controller ADC input and the external
-`VCC`/`GND`/`SIGNAL` header. The reading is not a calibrated or guaranteed
-conversion to lux.
-
-The I2C `SDA` and `SCL` signals are available at three physical connection
-positions: one connector populated by default and two optional horizontal
-positions. These signals are shared with the controller's factory programming
-and debugging interface; there is no separate user-accessible SWD connector.
+A product-specific UE0164 electrical schematic was not included in the selected source package. Do not substitute a schematic for a different light-sensor board. The released pinout in Chapter 4 documents user-visible connections, while the board views and dimension drawing in Chapter 6 document the physical layout.
 
 ### **9.2 Document Control** {.section-page}
 
 | Field | Value |
 |---|---|
-| Product | DevLab I2C GT36537 LDR Ambient Light Sensor |
-| Product hierarchy | UNIT Electronics → DevLab board ecosystem → Atom family |
+| Product | DevLab I2C LDR Photoresistor Light Sensor |
 | Manufacturer Part Number (MPN) | UE0164 |
-| Current board artwork | -- |
-| Current pinout | V1.0 (UE0164) |
-| Topology and dimensions | Pending |
-| Available schematic | -- |
-| Product Reference | Version 1.0.0 |
-| Publication date | 2026-08-31 |
-| Interfaces | Three I2C connection positions on one bus; `VCC`/`GND`/`SIGNAL` header; reserved expansion pads; shared factory programming/debug signals |
+| Pinout | V1.0, English and Spanish |
+| Board views | Product-specific top and bottom V1.0 |
+| Topology and dimensions | V1.0.0 drawings available |
+| CAD models | F3D, IGES, and STEP available under `hardware/mechanics/` |
+| Schematic | Pending product-specific release |
+| Product Reference | Version 1.1.0 |
+| Publication date | 2026-11-02 |
 
 ### **9.3 Technical Data Not Specified in This Revision**
 
 - Complete-module absolute-maximum ratings and current consumption
 - I2C pull-up values and validated bus-loading limits
-- Direct `SIGNAL` output range, loading characteristics, and ADC guidance
+- Direct `SIG` output range, loading characteristics, and ADC guidance
 - Mechanical tolerances, board thickness, component heights, and finished mass
 - Module-level optical, electrical, environmental, and EMC characterization

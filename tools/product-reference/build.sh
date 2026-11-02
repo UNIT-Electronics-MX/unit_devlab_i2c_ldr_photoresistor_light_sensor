@@ -7,7 +7,7 @@ REFERENCE_DOC="$PROJECT_DIR/tools/product-reference/reference-a4.docx"
 HTML_TEMPLATE="$PROJECT_DIR/tools/product-reference/templates/product-reference.html"
 HTML_STYLESHEET="$PROJECT_DIR/tools/product-reference/styles/product-reference.css"
 OUTPUT_DIR="${1:-$PROJECT_DIR/build/product-reference}"
-OUTPUT_BASENAME="unit_product_reference_v_1_0_0_atom_gt36537_ldr_ambient_light_sensor"
+OUTPUT_BASENAME="unit_product_reference_v_1_1_0_ue0164_i2c_ldr_photoresistor_light_sensor"
 
 if ! command -v pandoc >/dev/null 2>&1; then
   echo "Error: required command not found: pandoc" >&2
@@ -107,6 +107,7 @@ CONTENTS_FILE="$TEMP_DIR/contents.md"
       text=$0
       sub(/^## /, "", text)
       gsub(/\*\*/, "", text)
+      sub(/[[:space:]]+\{\.[^}]+\}$/, "", text)
       sub(/[[:space:]]+$/, "", text)
       print "- [" text "]{.toc-entry}"
     }
@@ -114,6 +115,7 @@ CONTENTS_FILE="$TEMP_DIR/contents.md"
       text=$0
       sub(/^### /, "", text)
       gsub(/\*\*/, "", text)
+      sub(/[[:space:]]+\{\.[^}]+\}$/, "", text)
       sub(/[[:space:]]+$/, "", text)
       print "  - [" text "]{.toc-entry}"
     }

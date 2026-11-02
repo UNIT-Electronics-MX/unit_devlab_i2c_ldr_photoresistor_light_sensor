@@ -11,11 +11,7 @@ through DevLab Device Protocol (DDP) v1.0.
 
 ### **3.1 Functional Block Diagram** {.section-page}
 
-![](../assets/block_diagram.png){width=7.1in}
-
-**Figure 3.1 — Functional signal and control paths.** Ambient light changes the
-LDR divider output. The signal is available at `SIGNAL` and is also acquired by
-the controller ADC for access over I2C.
+Ambient light changes the GT36537 LDR resistance. Its divider signal follows two paths: direct access at `SIG`, and acquisition by the controller ADC for digital access over I2C. The product-specific topology and pinout drawings are linked in Chapters 4, 6, and 8.
 
 ### **3.2 Operating Modes**
 
@@ -94,6 +90,7 @@ by typical host APIs.
 | Change I2C address | `0x21` | Stores and applies a new address in the valid range |
 | Restore factory configuration | `0x23` | Restores default configuration; reset required |
 | Read ambient-light data | `0x60` | Latest two-byte 12-bit raw sample |
+| Read GT36537 sensor data | `0x80` | Same raw sample through the sensor-data namespace |
 | Set ADC averaging | `0x62` | Selects 1, 4, 8, 16, or 24 samples |
 | Read ADC averaging | `0x63` | Returns the active averaging setting |
 | Turn `BUILTIN` off/on | `0xA0` / `0xA1` | Drives the built-in indicator LOW/HIGH |
@@ -136,10 +133,7 @@ which depends on which end of the voltage divider carries the LDR.
 
 ### **3.6 Built-In Indicator**
 
-The built-in status indicator is controlled through the DDP actuator
-functions. The shared DDP command names contain `RELAY`, but this product uses
-them for the built-in indicator and does not provide an electromechanical
-relay output.
+The firmware accepts DDP `RELAY_*` compatibility commands for the built-in indicator. This board has no electromechanical relay, and the GT36537 firmware does not advertise the `RELAY` capability bit. Use the commands only if the installed firmware supports them.
 
 The pulse duration is configurable from 25 ms to 1000 ms in 25 ms steps. A
 timed pulse runs without interrupting light measurements or I2C communication.

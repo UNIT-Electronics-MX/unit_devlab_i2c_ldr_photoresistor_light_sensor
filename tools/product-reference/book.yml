@@ -1,11 +1,11 @@
 ---
-title: "UNIT ATOM GT36537"
-subtitle: "I2C-Compatible LDR Ambient Light Sensor — Hardware Revision V0.3.1"
+title: "DevLab I2C LDR Photoresistor Light Sensor"
+subtitle: "Product Reference Manual — MPN: UE0164"
 author: "UNIT Electronics"
 lang: en-US
 mpn: "UE0164"
-version: "1.0.0"
-date: "2026-08-31"
+version: "1.1.0"
+date: "2026-11-02"
 toc-title: "Contents"
 
 # The order of this list determines the chapter order in the final document.

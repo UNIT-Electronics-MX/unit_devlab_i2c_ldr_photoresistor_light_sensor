@@ -1,8 +1,8 @@
-# DevLab: I2C GT36537 LDR Ambient Light Sensor
+# DevLab: I2C GT36537 LDR Ambient Light Sensor — MPN: UE0164
 
 The **DevLab I2C GT36537 LDR Ambient Light Sensor** is a small ambient light sensor module that contains the **GT36537 photoresistor (LDR)** and an onboard **microcontroller**. This version has an **I2C interface** that allows the sensor signal to be captured, processed and accessed digitally from an I2C host using the DevLab Device Protocol (DDP), unlike a typical LDR module which only offers an analog output.
 
-The module also includes a dedicated header for direct access to the **raw sensor signal**, allowing the GT36537 divider output to be used directly for analog measurements, testing, characterization or custom signal processing. The board has three I2C connections, which makes it easy to integrate with other DevLab modules and I2C based systems.
+The module also includes a dedicated header for direct access to the **raw sensor signal**, allowing the GT36537 divider output to be used directly for analog measurements, testing, characterization or custom signal processing. The board has one populated I2C connector and two optional I2C connector positions for integration with other DevLab modules and I2C based systems.
 
 
 <div align="center">
@@ -34,7 +34,7 @@ The module also includes a dedicated header for direct access to the **raw senso
 | Onboard MCU | 32-bit Arm Cortex-M0+ microcontroller |
 | Main Interface | I2C (DevLab Device Protocol, DDP 1.0) |
 | Raw Signal Access | Direct sensor signal available through dedicated header |
-| I2C Connectivity | 3 I2C connectors |
+| I2C Connectivity | One populated connector and two optional connector positions |
 | Status Indicators | Power and user/status LEDs |
 | Debug / Test | Dedicated test points |
 | Module Function | Ambient light acquisition and I2C sensor interface |
@@ -69,11 +69,10 @@ This architecture provides two ways to work with the sensor:
 
 ## Resources
 
-> Schematic, pinout and dimension diagrams for the GT36537 revision of this
-> board are pending. The `docs/hardware/` and `hardware/` files currently in
-> this repository still belong to the previous TEMT6000 revision and should
-> **not** be used as a reference for this board — they will be replaced once
-> the GT36537 hardware assets are available.
+The [UE0164 pinout, board views, topology and dimension drawings](hardware/resources)
+are available for this module, along with [CAD models](hardware/mechanics).
+The product-specific electrical schematic and complete module electrical limits
+have not yet been released.
 
 - Firmware: [`unit_firmware_i2c_gt36537_py32`](https://github.com/UNIT-Electronics-Labs/unit_firmware_i2c_gt36537_py32)
 - Arduino library: [`unit_devlab_gt36537_library`](https://github.com/UNIT-Electronics-MX/unit_devlab_gt36537_library) (`DevLab_GT365xx`)
@@ -85,7 +84,7 @@ This architecture provides two ways to work with the sensor:
 
 All hardware and documentation in this project are licensed under the **MIT License**.
 
-Please refer to [`LICENSE.md`](LICENSE.md) for full terms.
+Please refer to [`LICENSE`](LICENSE) for full terms.
 
 
 <div align="center">

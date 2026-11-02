@@ -2,7 +2,7 @@
 
 The DevLab I2C GT36537 LDR Ambient Light Sensor is an ambient-light sensor module developed by UNIT Electronics as part of the DevLab ecosystem. It combines a GT36537 photoresistor (LDR), wired as a voltage divider, with an onboard microcontroller-based interface controller, providing both I2C communication and direct access to the sensor's raw analog signal.
 
-The board provides three I2C connectors sharing the same bus, a dedicated RAW Signal Header for direct access to the unprocessed sensor output, and power/status indicators. The onboard microcontroller reads the GT36537 divider signal through its analog-to-digital converter (ADC) and makes the resulting measurements available through the I2C interface.
+The board provides one populated I2C connector and two optional I2C connector positions on the same bus, plus a dedicated RAW Signal Header for direct access to the unprocessed sensor output, and power/status indicators. The onboard microcontroller reads the GT36537 divider signal through its analog-to-digital converter (ADC) and makes the resulting measurements available through the I2C interface.
 
 ### **Applications**
 
@@ -17,9 +17,9 @@ The board provides three I2C connectors sharing the same bus, a dedicated RAW Si
 
 ### **DevLab Format Compatibility**
 
-As part of the DevLab ecosystem, the GT36537 module follows a compact form factor intended for rapid prototyping and integration with other DevLab modules. The board provides three I2C connectors carrying `GND`, `VCC`, `SDA`, and `SCL`, all wired to the same bus, giving multiple physical access points to the I2C interface and supporting different module integration and mounting configurations.
+As part of the DevLab ecosystem, the GT36537 module follows a compact form factor intended for rapid prototyping and integration with other DevLab modules. The V1.0 pinout shows one populated 4-pin, 1 mm JST I2C connector and two optional connector positions carrying `GND`, `VCC`, `SDA`, and `SCL`. All positions access the same bus.
 
-Connector pitch, mechanical drawings, and supply-voltage limits for this GT36537 revision are still pending publication; verify the current hardware documentation before connecting the module to a host.
+Product-specific top and bottom views, a dimension drawing, topology artwork, CAD files, and English and Spanish pinouts are available. The full schematic and complete-module electrical limits remain pending; verify the published pinout before connecting the module to a host.
 
 ### **Hardware Features**
 
@@ -33,4 +33,4 @@ Connector pitch, mechanical drawings, and supply-voltage limits for this GT36537
 
 The controller implements DevLab Device Protocol (DDP) v1.0, using DevLab Interface for I2C bus management. DevLab Interface is integrated into the module's own library, so no separate bus-handling code is required. The GT36537 profile is identified by Device ID `0x0106`, and the factory I2C address is `0x26`.
 
-The released V1.0 pinout diagrams for this GT36537 revision are available in Chapter 4. Detailed electrical ratings and mechanical dimensions remain pending.
+The released V1.0 pinout diagrams are presented in Chapter 4, and the board views and dimension drawing in Chapter 6. Complete electrical ratings and mechanical tolerances remain to be confirmed.

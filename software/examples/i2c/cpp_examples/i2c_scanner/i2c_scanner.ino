@@ -42,7 +42,7 @@ void setup() {
 
   bus.begin(SDA_PIN, SCL_PIN);
 
-  Serial.println("UNIT ATOM TEMT6000 I2C scanner");
+  Serial.println("DevLab UE0164 GT36537 I2C scanner");
   Serial.println("A detected address does not define the measurement protocol.");
 }
 

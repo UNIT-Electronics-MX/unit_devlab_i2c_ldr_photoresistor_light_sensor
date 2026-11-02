@@ -28,8 +28,7 @@ need separate bus-handling or bus-recovery code.
 
 Connect the module with power removed. Align the connector with the
 orientation printed on the board and verify `VCC`, `GND`, `SDA`, and `SCL`
-before applying power. A connection diagram for this GT36537 revision is
-pending publication.
+before applying power. The released connection drawing is in Chapter 4.
 
 | Module | ESP32 | RP2040 / RP2350 | AVR | Function |
 |---|---:|---:|---|---|
@@ -60,14 +59,17 @@ uploading the sketch.
 
 ### **5.4 Single-Sensor Arduino Example** {.page-break}
 
-Open `serialLightRead.ino` from the library examples, or create it with the
-following sketch:
+Open the repository example at `software/examples/i2c/cpp_examples/serialLightRead/serialLightRead.ino`. Its current source is reproduced below:
 
 ```{.cpp .compact-code}
 /**
  * @file serialLightRead.ino
  * @brief Verifies a GT36537 DDP device (ID 0x0106) on the I2C bus and prints
  *        its raw ADC0 reading and relative percentage over Serial.
+ *
+ * The GT36537 is an LDR read through PA2 (ADC_IN2, 12 bits). The value is a
+ * relative light measurement (0-4095), not lux: the direction of the reading
+ * depends on which end of the divider the LDR is connected to.
  */
 
 #include <Arduino.h>
@@ -83,6 +85,8 @@ following sketch:
   constexpr int SDA_PIN = 6;
   constexpr int SCL_PIN = 7;
 #elif defined(ARDUINO_ARCH_AVR)
+  // AVR has fixed I2C pins (Uno/Nano: A4/A5, Mega: 20/21, Leonardo: 2/3);
+  // SDA/SCL come from the board variant and begin() ignores the pin numbers.
   #define I2C_BUS Wire
   constexpr int SDA_PIN = SDA;
   constexpr int SCL_PIN = SCL;
@@ -124,24 +128,30 @@ void loop() {
   uint16_t raw = 0U;
   if (sensor.readRaw(raw)) {
     float percent = (raw * 100.0f) / 4095.0f;
+#if defined(ARDUINO_ARCH_AVR)
+    // AVR Serial has no printf(), and avr-libc printf lacks %f.
+    Serial.print("adc0=");
+    Serial.print(raw);
+    Serial.print(" percent=");
+    Serial.println(percent, 1);
+#else
     Serial.printf("adc0=%u percent=%.1f\n", raw, percent);
+#endif
   } else {
     Serial.println("ERROR: light read failed");
   }
 }
 ```
 
-The complete example also supports AVR hosts, where `Serial.printf()` is not
-available and the output is printed with `Serial.print()` instead.
+The AVR branch prints with `Serial.print()` because `Serial.printf()` is not available there.
 
 The following companion examples are provided:
 
 | Example | Purpose |
 |---|---|
 | `serialLightReadInverted` | Reports `4095 - raw` with `readInvertRaw()` and `readInvertPercentage()` so that the value rises with more light |
-| `serialLightRawPlot` | Streams one raw integer per line at 115200 baud for the Arduino Serial Plotter or `python/serial_plotter.py` |
+| `serialLightRawPlot` | Streams one raw integer per line at 115200 baud for the Arduino Serial Plotter |
 | `i2c_scanner` | Scans the I2C bus at 115200 baud and prints the 7-bit address of every device that responds; a detected address only confirms that a device acknowledged, not that it is a GT36537 |
-| `changeAddress` | Serial tool at 115200 baud to scan for DDP devices and reassign the module address (factory address `0x26`), for example `scan` or `change 26 30` |
 
 ### **5.5 Upload and Serial Output** {.section-page}
 

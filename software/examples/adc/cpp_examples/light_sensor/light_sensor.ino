@@ -1,6 +1,6 @@
 #include <Arduino.h>
 
-// Connect this pin to the V0.3.1 board's direct SIG contact.
+// Connect this pin to the UE0164 module's direct SIG contact.
 const uint8_t SENSOR_PIN = A0;
 
 #if defined(ARDUINO_ARCH_AVR)
@@ -22,8 +22,8 @@ void setup() {
 #endif
 
   pinMode(SENSOR_PIN, INPUT);
-  Serial.println("UNIT ATOM TEMT6000 direct analog SIG");
-  Serial.println("V0.3.1 transfer and lux calibration are not yet specified.");
+  Serial.println("DevLab UE0164 GT36537 direct analog SIG");
+  Serial.println("Analog transfer and lux calibration are not yet specified.");
 }
 
 void loop() {

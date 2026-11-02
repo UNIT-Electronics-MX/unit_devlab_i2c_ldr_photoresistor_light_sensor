@@ -41,7 +41,7 @@ absolute maximum ratings are also not specified.
 | Device protocol | DDP v1.0 | Command transaction followed by an exact-length read transaction |
 | Logical Device ID | `0x0106` | GT36537 identity; independent of the I2C address |
 | Firmware / hardware | 1.0 / 1.0 | Current observable controller profile |
-| Capability bitmap | `0x000001B9` | I2C configuration, analog input, sensor data, relay, watchdog, and persistent configuration |
+| Capability bitmap | `0x00000199` | I2C configuration, analog input, sensor data, watchdog, and persistent configuration |
 | Raw digital sample | `0` to `4095` | 12-bit ADC code returned as an unsigned 16-bit little-endian value |
 | ADC update interval | Approximately 20 ms | Background acquisition; an I2C read returns the latest published sample |
 | Command processing delay | 2 to 5 ms | Use 5 ms conservatively before reading |
@@ -103,4 +103,4 @@ complete module.
 5. During normal operation, use the I2C connection points only for I2C communication. The same physical signals are shared with the controller's factory programming and debugging functions; SWD is not provided as a separate user interface.
 6. Do not attempt firmware replacement or external debugging through the I2C connection points. Programming, debugging, and reset functions are reserved for manufacturer use and factory diagnostics.
 7. Remove power before cutting, soldering, or reworking the I2C disable bridge or optional connector positions.
-8. Verify the current released schematic, component specifications, and interface documentation before production integration.
+8. Verify the product-specific schematic when released, component specifications, and interface documentation before production integration.

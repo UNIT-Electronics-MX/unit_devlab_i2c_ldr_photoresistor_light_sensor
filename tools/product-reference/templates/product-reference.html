@@ -4,10 +4,15 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="generator" content="Pandoc">
-  <title>$title$ — $subtitle$</title>
+  <title>$title$ — MPN: $mpn$</title>
   $for(css)$
   <link rel="stylesheet" href="$css$">
   $endfor$
+  <style>
+    @page {
+      @bottom-right { content: "V$version$  ·  $date$"; }
+    }
+  </style>
 </head>
 <body>
   <section class="cover">
@@ -17,7 +22,7 @@
     </div>
 
     <div class="cover__identity">
-      <p class="cover__eyebrow">UNIT ELECTRONICS · DEVLAB ECOSYSTEM · ATOM FAMILY</p>
+      <p class="cover__eyebrow">UNIT ELECTRONICS · DEVLAB ECOSYSTEM</p>
       <h1>$title$</h1>
       <p class="cover__part">MPN: $mpn$</p>
       <p class="cover__version">Version $version$</p>
@@ -27,7 +32,7 @@
       <div class="cover__halo"></div>
       <img
         src="hardware/resources/unit_top_v_1_0_ue0164_i2c_ldr_light_sensor_3d.png"
-        alt="UNIT ATOM GT36537 ambient light sensor top view">
+        alt="UE0164 LDR Photoresistor Light Sensor top view">
     </div>
 
     <div class="cover__summary">
@@ -46,7 +51,7 @@
 
     <div class="cover__footer">
       <span>UNIT Electronics® · DevLab Ecosystem · Atom Family</span>
-      <span>Document date $date$</span>
+      <span>Released $date$</span>
     </div>
   </section>
 
@@ -55,7 +60,9 @@
     <p class="section-kicker">DOCUMENT MAP</p>
     <h1>Contents</h1>
     <div class="contents-page__rule"></div>
-    $toc$
+    <nav id="TOC" aria-label="Contents">
+      $toc$
+    </nav>
   </section>
   $endif$
 
