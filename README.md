@@ -17,10 +17,10 @@ The module also includes a dedicated header for direct access to the **raw senso
 
 ### Quick Setup
 
-<img src="https://img.shields.io/badge/Product%20Wiki-pending-lightgrey?style=for-the-badge" alt="Product Wiki (pending)">
-[<img src="https://img.shields.io/badge/Datasheet-green?style=for-the-badge" alt="Product Reference">](docs/hardware/unit_product_reference_v_1_1_0_ue0164_i2c_ldr_photoresistor_light_sensor.pdf)
-[<img src="https://img.shields.io/badge/Buy%20Now-orange?style=for-the-badge" alt="Buy Now">](https://uelectronics.com/)
-[<img src="https://img.shields.io/badge/Getting%20Started-purple?style=for-the-badge" alt="Getting Started">](https://github.com/UNIT-Electronics-MX/unit_devlab_i2c_ldr_photoresistor_light_sensor/tree/main/software)
+<img src="https://img.shields.io/badge/Product%20Wiki-pending-lightgrey?style=for-the-badge" alt="Product Wiki pending">
+[<img src="https://img.shields.io/badge/Datasheet-green?style=for-the-badge" alt="Datasheet">](docs/hardware/unit_product_reference_v_1_1_0_ue0164_i2c_ldr_photoresistor_light_sensor.pdf)
+<img src="https://img.shields.io/badge/Buy%20Now-pending-lightgrey?style=for-the-badge" alt="Buy Now pending">
+[<img src="https://img.shields.io/badge/Getting%20Started-purple?style=for-the-badge" alt="Getting Started">](software/README.md)
 
 </div>
 
@@ -91,10 +91,3 @@ have not yet been released.
 All hardware and documentation in this project are licensed under the **MIT License**.
 
 Please refer to [`LICENSE`](LICENSE) for full terms.
-
-
-<div align="center">
-
-  <sub>Template created by UNIT Electronics</sub>
-
-</div>
