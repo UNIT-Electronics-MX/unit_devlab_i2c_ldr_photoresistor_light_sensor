@@ -1,29 +1,19 @@
 ## **6 Mechanical Information**
 
-The current mechanical drawing defines the board outline and the dimensions
-shown below. Dimensions are in millimetres.
+The supplied board views identify the component and underside layouts of the UE0164 I2C LDR Photoresistor Light Sensor.
+Use the labeled drawings for fit checks; do not infer dimensions by scaling a render.
 
-### **6.1 Board Dimensions** {.section-page}
+### **6.1 Top View** {.section-page}
 
-**Figure 6.1 — Board dimensions.**
+![UE0164 I2C LDR Photoresistor Light Sensor top view.](../../../hardware/resources/unit_top_v_1_0_ue0164_i2c_ldr_light_sensor_3d.png){width=5.4in}
 
-Use the drawing itself as the dimensional reference; do
-not derive additional dimensions by scaling the image.
+### **6.2 Bottom View** {.section-page}
 
-### **6.2 Integration Clearances** {.section-page}
+![UE0164 I2C LDR Photoresistor Light Sensor bottom view.](../../../hardware/resources/unit_btm_v_1_0_ue0164_i2c_ldr_light_sensor_3d.png){width=5.4in}
 
-Leave optical clearance around the GT36537 LDR sensing surface and its
-field of view. Provide connector insertion and cable bend clearance at the
-populated I2C connector and at any optional connector position that will be
-assembled. Keep conductive fasteners away from contacts and factory service
-points, and avoid enclosure features that shadow the sensor or indicators.
+### **6.3 Board Dimensions** {.section-page}
 
-### **6.3 Mechanical Data Not Specified**
+![UE0164 I2C LDR Photoresistor Light Sensor dimension drawing.](../../../hardware/resources/unit_dimensions_v_1_0_0_ue0164_i2c_ldr_photoresistor_light_sensor.png){width=6.5in}
 
-- Board thickness, dimensional tolerances, and finished mass
-- Unannotated feature coordinates and edge clearances
-- Optional connector population variants and mating-part numbers
-- Connector insertion envelope, retention force, and cable bend radius
-- Maximum top- and bottom-side component heights
-- Optical axis, keep-out cone, and enclosure-window specification
-- Reserved expansion-pad and factory service-point coordinates
+Use the dimensions printed on the supplied drawing. PCB thickness, component heights,
+connector clearance, and manufacturing tolerances require separate verification.
