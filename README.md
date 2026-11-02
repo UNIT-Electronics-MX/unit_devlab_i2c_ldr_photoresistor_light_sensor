@@ -73,10 +73,12 @@ This architecture provides two ways to work with the sensor:
 
 ## Resources
 
+- [Schematic diagram](hardware/unit_sch_v_1_0_0_ue0164_devlab_i2c_ldr_sensor.pdf)
+
 The [UE0164 pinout, board views, topology and dimension drawings](hardware/resources)
 are available for this module, along with [CAD models](hardware/mechanics).
-The product-specific electrical schematic and complete module electrical limits
-have not yet been released.
+The [UE0164 Rev 1.0.0 schematic](hardware/unit_sch_v_1_0_0_ue0164_devlab_i2c_ldr_sensor.pdf) is available.
+Electrical limits not specified in the drawing remain to be confirmed.
 
 - Firmware: [`unit_firmware_i2c_gt36537_py32`](https://github.com/UNIT-Electronics-Labs/unit_firmware_i2c_gt36537_py32)
 - Arduino library: [`unit_devlab_gt36537_library`](https://github.com/UNIT-Electronics-MX/unit_devlab_gt36537_library) (`DevLab_GT365xx`)
