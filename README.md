@@ -42,8 +42,6 @@ The module also includes a dedicated header for direct access to the **raw senso
 | Module Function | Ambient light acquisition and I2C sensor interface |
 | Factory I2C Address | `0x26` (7-bit) |
 | DDP Device ID | `0x0106` |
-| Firmware Status | Stable |
-| Firmware .bin Date | 2026-10-21 11:23 CST |
 
 
 ### How It Works
