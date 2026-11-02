@@ -25,7 +25,8 @@ and debugging interface; there is no separate user-accessible SWD connector.
 | Product hierarchy | UNIT Electronics → DevLab board ecosystem → Atom family |
 | Manufacturer Part Number (MPN) | UE0164 |
 | Current board artwork | -- |
-| Current pinout, topology, and dimensions | -- |
+| Current pinout | V1.0 (UE0164) |
+| Topology and dimensions | Pending |
 | Available schematic | -- |
 | Product Reference | Version 1.0.0 |
 | Publication date | 2026-08-31 |

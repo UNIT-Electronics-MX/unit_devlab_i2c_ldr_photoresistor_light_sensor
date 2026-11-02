@@ -11,9 +11,9 @@ integrates DevLab Interface for I2C bus management.
 The Product Reference documents the observable GT36537 profile: factory 7-bit
 address `0x26`, DDP Device ID `0x0106`, DDP v1.0, and the 12-bit raw reading of
 the LDR divider (`0` to `4095`) acquired on controller pin `PA2` (ADC_IN2).
-Hardware assets for this revision (board artwork, pinout, dimensions,
-schematic) and complete-module electrical limits are still pending and are
-tracked as open items in Chapters 1, 2, 6, and 9.
+The V1.0 pinout is available in English and Spanish. Board artwork,
+dimensions, schematic, and complete-module electrical limits remain pending
+and are tracked as open items in Chapters 1, 2, 6, and 9.
 
 ## Local validation build
 

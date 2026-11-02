@@ -8,8 +8,8 @@ read by the onboard microcontroller and made available through the I2C
 interface, and remains separately available as an unprocessed analog signal
 on the RAW Signal Header.
 
-Detailed mechanical, pinout, and schematic assets for this GT36537 revision
-are still pending publication. The values in this chapter reflect the current
+The V1.0 pinout for this GT36537 revision is available. Detailed mechanical
+and schematic assets are still pending publication. The values in this chapter reflect the current
 confirmed design; items not yet released are marked accordingly.
 
 ### **1.1 Accessories** {.section-page}
@@ -41,7 +41,7 @@ The following equipment may be used for integration, testing, and validation. Th
 | Product type | I2C-compatible ambient-light module with direct raw-signal access |
 | Optical component | GT36537 photoresistor (LDR), wired as a voltage divider |
 | Interface controller | 32-bit Arm Cortex-M0+ microcontroller; exact fitted part pending confirmation |
-| Manufacturer Part Number (MPN) | Pending |
+| Manufacturer Part Number (MPN) | UE0164 |
 | Current board artwork | Pending |
 | Product Reference | Pending — this chapter reflects the GT36537 revision in progress |
 
@@ -69,8 +69,8 @@ prior TEMT6000 (UE0098) hardware revision and must not be used as a layout
 reference for the GT36537 module. This section will be completed once the
 corresponding hardware assets are released.
 
-Refer to Chapter 4 for user connections once the released schematic and
-pinout are available.
+Refer to the released pinout in Chapter 4 for user connections. The
+schematic remains pending.
 
 ### **1.6 Board Views** {.section-page}
 
