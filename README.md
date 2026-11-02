@@ -18,7 +18,7 @@ The module also includes a dedicated header for direct access to the **raw senso
 ### Quick Setup
 
 <img src="https://img.shields.io/badge/Product%20Wiki-pending-lightgrey?style=for-the-badge" alt="Product Wiki (pending)">
-<img src="https://img.shields.io/badge/Datasheet-pending-lightgrey?style=for-the-badge" alt="Datasheet (pending)">
+[<img src="https://img.shields.io/badge/Datasheet-green?style=for-the-badge" alt="Product Reference">](docs/hardware/unit_product_reference_v_1_1_0_ue0164_i2c_ldr_photoresistor_light_sensor.pdf)
 [<img src="https://img.shields.io/badge/Buy%20Now-orange?style=for-the-badge" alt="Buy Now">](https://uelectronics.com/)
 [<img src="https://img.shields.io/badge/Getting%20Started-purple?style=for-the-badge" alt="Getting Started">](https://github.com/UNIT-Electronics-MX/unit_devlab_i2c_ldr_photoresistor_light_sensor/tree/main/software)
 
@@ -29,6 +29,8 @@ The module also includes a dedicated header for direct access to the **raw senso
 
 | Feature | Description |
 |---|---|
+| Product | DevLab I2C GT36537 LDR Ambient Light Sensor |
+| MPN | UE0164 |
 | Sensor | GT36537 Ambient Light Sensor |
 | Sensor Type | Ambient light photoresistor (LDR) |
 | Onboard MCU | 32-bit Arm Cortex-M0+ microcontroller |
@@ -38,9 +40,13 @@ The module also includes a dedicated header for direct access to the **raw senso
 | Status Indicators | Power and user/status LEDs |
 | Debug / Test | Dedicated test points |
 | Module Function | Ambient light acquisition and I2C sensor interface |
+| Factory I2C Address | `0x26` (7-bit) |
+| DDP Device ID | `0x0106` |
+| Firmware Status | Stable |
+| Firmware .bin Date | 2026-10-21 11:23 CST |
 
 
-## How It Works
+### How It Works
 
 The **GT36537** photoresistor (LDR) changes resistance according to the incident ambient light level. Wired as a voltage divider, its midpoint is read by the onboard **microcontroller** through a 12-bit ADC input, updated roughly every 20 ms.
 
@@ -54,7 +60,7 @@ This architecture provides two ways to work with the sensor:
 - **RAW signal:** Direct access to the sensor output for analog measurements, testing, or custom processing.
 
 
-## Use Cases
+## Applications
 
 - Ambient light monitoring.
 - Automatic display brightness adjustment.
@@ -80,7 +86,7 @@ have not yet been released.
 - [Software examples in this repository](software)
 
 
-## License
+## 📝 License
 
 All hardware and documentation in this project are licensed under the **MIT License**.
 
@@ -89,6 +95,6 @@ Please refer to [`LICENSE`](LICENSE) for full terms.
 
 <div align="center">
 
-  <sub>Developed by UNIT Electronics</sub>
+  <sub>Template created by UNIT Electronics</sub>
 
 </div>
