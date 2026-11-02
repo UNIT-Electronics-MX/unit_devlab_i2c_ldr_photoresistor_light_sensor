@@ -7,7 +7,8 @@ The module also includes a dedicated header for direct access to the **raw senso
 
 <div align="center">
 
-*(Product photo pending — the GT36537 hardware asset has not been provided yet)*
+<img src="hardware/resources/unit_top_v_1_0_ue0164_i2c_ldr_light_sensor_3d.png" width="450px" alt="DevLab I2C LDR Light Sensor top view">
+<p><em>DevLab I2C LDR Light Sensor</em></p>
 
 </div>
 
