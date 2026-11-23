@@ -13,7 +13,7 @@ that require application-specific verification.
 | `VCC` | Module supply voltage | — | 3.3 or 5 | — | V |
 | `VI2C` | I2C logic-high and pull-up voltage | — | `VCC` | — | V |
 | `fSCL` | I2C clock frequency | 100 | — | 400 | kHz |
-| `VSIG` | Direct analog `SIGNAL` voltage range | — | Not specified | — | V |
+| `VSIG` | Analog sensor signal voltage range at the `SIG` pad | — | Not specified | — | V |
 | `ICC` | Module supply current | — | Not specified | — | mA |
 | `TA` | Module ambient operating temperature | Not specified | — | Not specified | °C |
 
@@ -26,7 +26,7 @@ the module supply, so the host must tolerate the actual bus voltage. When the
 module operates at 5 V with a 3.3 V host, bidirectional level translation may
 be required.
 
-The direct `SIGNAL` range requires analog-stage verification and measurement.
+The analog sensor signal range at the `SIG` pad requires analog-stage verification and measurement.
 Module current consumption must include the controller, indicators, pull-ups,
 and sensor load. The complete-module ambient-temperature range has not been
 qualified. I2C pull-up resistance, bus capacitance, and complete-module
@@ -64,7 +64,7 @@ user programming.
 | User digital interface | I2C |
 | I2C addressing | 7-bit addressing |
 | Supported I2C clock | 100 kHz and 400 kHz |
-| Direct sensor access | Analog `SIGNAL` contact |
+| Direct sensor access | `SIG` pad (analog sensor signal) |
 | Programming and debugging | Reserved for factory use |
 
 ### **2.4 Module-Level Characteristics**
@@ -83,7 +83,7 @@ implementation and are described in the preceding sections.
 | Raw digital output | 0 to 4095 |
 | ADC update interval | Approximately 20 ms |
 | Command processing delay | 2 to 5 ms |
-| Direct analog access | `SIGNAL` contact on the RAW Signal Header |
+| Direct analog access | `SIG` pad on the RAW Signal Header |
 
 Additional characteristics such as complete-module absolute maximum ratings,
 supply-current limits, guaranteed analog-output accuracy, calibrated lux
@@ -99,7 +99,7 @@ complete module.
 1. Use a current-limited 3.3 V or 5 V supply during engineering bring-up.
 2. Verify connector orientation and establish a common ground before applying power.
 3. Do not exceed the controller upper operating-voltage limit of 5.5 V.
-4. When operating the module at 5 V, verify host compatibility with the actual voltage present on `SDA`, `SCL`, and `SIGNAL`. Use appropriate level translation when required.
+4. When operating the module at 5 V, verify host compatibility with the actual voltage present on the `SDA`, `SCL`, and `SIG` pads. Use appropriate level translation when required.
 5. During normal operation, use the I2C connection points only for I2C communication. The same physical signals are shared with the controller's factory programming and debugging functions; SWD is not provided as a separate user interface.
 6. Do not attempt firmware replacement or external debugging through the I2C connection points. Programming, debugging, and reset functions are reserved for manufacturer use and factory diagnostics.
 7. Remove power before cutting, soldering, or reworking the I2C disable bridge or optional connector positions.

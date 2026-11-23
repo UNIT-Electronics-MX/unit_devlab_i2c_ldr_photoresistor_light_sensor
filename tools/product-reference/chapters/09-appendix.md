@@ -22,6 +22,6 @@ A product-specific UE0164 electrical schematic was not included in the selected 
 
 - Complete-module absolute-maximum ratings and current consumption
 - I2C pull-up values and validated bus-loading limits
-- Direct `SIG` output range, loading characteristics, and ADC guidance
+- Analog sensor signal range at the `SIG` pad, loading characteristics, and ADC guidance
 - Mechanical tolerances, board thickness, component heights, and finished mass
 - Module-level optical, electrical, environmental, and EMC characterization

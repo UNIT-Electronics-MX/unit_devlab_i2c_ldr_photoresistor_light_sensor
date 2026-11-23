@@ -1,0 +1,132 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1260" viewBox="0 0 1920 1260" font-family="'Noto Sans','DejaVu Sans','Liberation Sans',sans-serif">
+  <defs>
+    <marker id="aOr" markerWidth="14" markerHeight="14" refX="12" refY="7" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M1,1 L13,7 L1,13 Z" fill="#f97316"/></marker>
+    <marker id="aBl" markerWidth="14" markerHeight="14" refX="12" refY="7" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M1,1 L13,7 L1,13 Z" fill="#0ea5e9"/></marker>
+    <marker id="aPu" markerWidth="14" markerHeight="14" refX="12" refY="7" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M1,1 L13,7 L1,13 Z" fill="#7c3aed"/></marker>
+    <marker id="aRd" markerWidth="14" markerHeight="14" refX="12" refY="7" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M1,1 L13,7 L1,13 Z" fill="#ef4444"/></marker>
+    <marker id="aGn" markerWidth="14" markerHeight="14" refX="12" refY="7" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M1,1 L13,7 L1,13 Z" fill="#4caf30"/></marker>
+  </defs>
+
+  <rect width="1920" height="1260" fill="#ffffff"/>
+
+  <!-- Legend -->
+  <g font-size="23" fill="#222">
+    <rect x="40" y="34" width="30" height="30" rx="7" fill="#ffe99a" stroke="#f97316" stroke-width="3.5"/><text x="82" y="59">Analog path</text>
+    <rect x="290" y="34" width="30" height="30" rx="7" fill="#c8f2f7" stroke="#0ea5e9" stroke-width="3.5"/><text x="332" y="59">Digital / DDP</text>
+    <rect x="560" y="34" width="30" height="30" rx="7" fill="#e6c4f5" stroke="#7c3aed" stroke-width="3.5"/><text x="602" y="59">I2C bus</text>
+    <rect x="760" y="34" width="30" height="30" rx="7" fill="#d9f2cc" stroke="#4caf30" stroke-width="3.5"/><text x="802" y="59">Memory</text>
+    <rect x="960" y="34" width="30" height="30" rx="7" fill="#ffd6d6" stroke="#ef4444" stroke-width="3.5"/><text x="1002" y="59">Power</text>
+    <rect x="1150" y="34" width="30" height="30" rx="7" fill="#eeeeee" stroke="#9ca3af" stroke-width="3.5"/><text x="1192" y="59">External</text>
+  </g>
+
+  <!-- PATH 1 label -->
+  <text x="720" y="135" font-size="26" font-weight="700" fill="#c2570c">PATH 1 · Direct analog access</text>
+
+  <!-- Ambient light -->
+  <rect x="40" y="395" width="180" height="120" rx="16" fill="#fff6c4" stroke="#f5b301" stroke-width="4.5"/>
+  <text x="130" y="445" font-size="28" font-weight="700" text-anchor="middle" fill="#222">Ambient</text>
+  <text x="130" y="482" font-size="28" font-weight="700" text-anchor="middle" fill="#222">light</text>
+  <line x1="220" y1="455" x2="268" y2="455" stroke="#f97316" stroke-width="5" marker-end="url(#aOr)"/>
+
+  <!-- LDR divider -->
+  <rect x="270" y="350" width="350" height="210" rx="16" fill="#ffe99a" stroke="#f97316" stroke-width="4.5"/>
+  <text x="445" y="408" font-size="27" font-weight="700" text-anchor="middle" fill="#222">GT36537 LDR (LDR1)</text>
+  <text x="445" y="450" font-size="22" text-anchor="middle" fill="#222">wired as a</text>
+  <text x="445" y="480" font-size="22" text-anchor="middle" fill="#222">voltage divider</text>
+  <text x="445" y="530" font-size="22" font-weight="700" text-anchor="middle" fill="#9a3f00">→ analog sensor signal</text>
+
+  <!-- JP5 tag -->
+  <line x1="480" y1="560" x2="480" y2="600" stroke="#9ca3af" stroke-width="3" stroke-dasharray="7 6"/>
+  <rect x="330" y="600" width="290" height="52" rx="12" fill="#ffffff" stroke="#9ca3af" stroke-width="3" stroke-dasharray="7 6"/>
+  <text x="475" y="634" font-size="21" text-anchor="middle" fill="#444">JP5 · SNS link (LDR filter)</text>
+
+  <!-- Branch -->
+  <line x1="620" y1="455" x2="665" y2="455" stroke="#f97316" stroke-width="5"/>
+  <circle cx="665" cy="455" r="8" fill="#f97316"/>
+  <polyline points="665,455 665,210 718,210" fill="none" stroke="#f97316" stroke-width="5" marker-end="url(#aOr)"/>
+  <polyline points="665,455 665,490 750,490" fill="none" stroke="#f97316" stroke-width="5" marker-end="url(#aOr)"/>
+
+  <!-- SIG pad and host ADC -->
+  <rect x="720" y="150" width="340" height="120" rx="16" fill="#ffe99a" stroke="#f97316" stroke-width="4.5"/>
+  <text x="890" y="192" font-size="28" font-weight="700" text-anchor="middle" fill="#222">SIG pad</text>
+  <text x="890" y="226" font-size="22" text-anchor="middle" fill="#222">RAW Signal Header (J2)</text>
+  <text x="890" y="254" font-size="22" text-anchor="middle" fill="#555">VCC · GND · SIG</text>
+  <line x1="1060" y1="210" x2="1158" y2="210" stroke="#f97316" stroke-width="5" marker-end="url(#aOr)"/>
+  <rect x="1160" y="150" width="380" height="120" rx="16" fill="#eeeeee" stroke="#9ca3af" stroke-width="4.5"/>
+  <text x="1350" y="198" font-size="28" font-weight="700" text-anchor="middle" fill="#222">Host ADC or</text>
+  <text x="1350" y="236" font-size="28" font-weight="700" text-anchor="middle" fill="#222">measuring instrument</text>
+
+  <!-- Controller container -->
+  <rect x="720" y="330" width="1170" height="500" rx="22" fill="#f3fbfd" stroke="#0ea5e9" stroke-width="4.5"/>
+  <text x="752" y="376" font-size="25" font-weight="700" fill="#0b6f99">PATH 2 · Digital access — onboard controller (IC1)</text>
+
+  <!-- Row 1 -->
+  <rect x="752" y="410" width="250" height="160" rx="16" fill="#c8f2f7" stroke="#0ea5e9" stroke-width="4.5"/>
+  <text x="877" y="462" font-size="29" font-weight="700" text-anchor="middle" fill="#222">ADC</text>
+  <text x="877" y="508" font-size="23" text-anchor="middle" fill="#222">12-bit</text>
+  <text x="877" y="540" font-size="23" text-anchor="middle" fill="#222">0..4095</text>
+
+  <rect x="1032" y="410" width="250" height="160" rx="16" fill="#c8f2f7" stroke="#0ea5e9" stroke-width="4.5"/>
+  <text x="1157" y="462" font-size="29" font-weight="700" text-anchor="middle" fill="#222">Averaging</text>
+  <text x="1157" y="508" font-size="23" text-anchor="middle" fill="#222">1, 4, 8, 16, 24</text>
+  <text x="1157" y="540" font-size="23" text-anchor="middle" fill="#222">samples</text>
+
+  <rect x="1312" y="410" width="250" height="160" rx="16" fill="#c8f2f7" stroke="#0ea5e9" stroke-width="4.5"/>
+  <text x="1437" y="462" font-size="27" font-weight="700" text-anchor="middle" fill="#222">Latest sample</text>
+  <text x="1437" y="508" font-size="22" text-anchor="middle" fill="#222">12-bit raw value</text>
+  <text x="1437" y="540" font-size="22" text-anchor="middle" fill="#222">updated ≈ 20 ms</text>
+
+  <rect x="1592" y="410" width="250" height="160" rx="16" fill="#c8f2f7" stroke="#0ea5e9" stroke-width="4.5"/>
+  <text x="1717" y="462" font-size="29" font-weight="700" text-anchor="middle" fill="#222">DDP v1.0</text>
+  <text x="1717" y="508" font-size="23" text-anchor="middle" fill="#222">command</text>
+  <text x="1717" y="540" font-size="23" text-anchor="middle" fill="#222">handler</text>
+
+  <line x1="1002" y1="490" x2="1030" y2="490" stroke="#0ea5e9" stroke-width="5" marker-end="url(#aBl)"/>
+  <line x1="1282" y1="490" x2="1310" y2="490" stroke="#0ea5e9" stroke-width="5" marker-end="url(#aBl)"/>
+  <line x1="1562" y1="490" x2="1590" y2="490" stroke="#0ea5e9" stroke-width="5" marker-end="url(#aBl)"/>
+
+  <!-- Row 2 -->
+  <rect x="932" y="650" width="360" height="150" rx="16" fill="#d9f2cc" stroke="#4caf30" stroke-width="4.5"/>
+  <text x="1112" y="700" font-size="27" font-weight="700" text-anchor="middle" fill="#222">Stored configuration</text>
+  <text x="1112" y="744" font-size="21" text-anchor="middle" fill="#222">address · averaging · pulse time</text>
+  <text x="1112" y="776" font-size="21" text-anchor="middle" fill="#222">retained after a power cycle</text>
+
+  <rect x="1322" y="650" width="240" height="150" rx="16" fill="#c8f2f7" stroke="#0ea5e9" stroke-width="4.5"/>
+  <text x="1442" y="706" font-size="27" font-weight="700" text-anchor="middle" fill="#222">USR_LED</text>
+  <text x="1442" y="750" font-size="22" text-anchor="middle" fill="#222">built-in</text>
+  <text x="1442" y="780" font-size="22" text-anchor="middle" fill="#222">indicator</text>
+
+  <rect x="1592" y="650" width="250" height="150" rx="16" fill="#e6c4f5" stroke="#7c3aed" stroke-width="4.5"/>
+  <text x="1717" y="704" font-size="29" font-weight="700" text-anchor="middle" fill="#222">I2C slave</text>
+  <text x="1717" y="747" font-size="23" text-anchor="middle" fill="#222">SDA · SCL</text>
+  <text x="1717" y="778" font-size="23" text-anchor="middle" fill="#222">0x26 (factory)</text>
+
+  <!-- DDP to config / LED / I2C slave -->
+  <polyline points="1612,570 1612,596 1112,596 1112,648" fill="none" stroke="#4caf30" stroke-width="5" marker-start="url(#aGn)" marker-end="url(#aGn)"/>
+  <polyline points="1632,570 1632,620 1442,620 1442,648" fill="none" stroke="#0ea5e9" stroke-width="5" marker-end="url(#aBl)"/>
+  <line x1="1740" y1="570" x2="1740" y2="648" stroke="#7c3aed" stroke-width="5" marker-start="url(#aPu)" marker-end="url(#aPu)"/>
+
+  <!-- I2C slave -> JP1 -> connectors -> host -->
+  <line x1="1717" y1="800" x2="1717" y2="868" stroke="#7c3aed" stroke-width="5" marker-start="url(#aPu)"/>
+  <rect x="1612" y="868" width="210" height="48" rx="12" fill="#ffffff" stroke="#9ca3af" stroke-width="3" stroke-dasharray="7 6"/>
+  <text x="1717" y="901" font-size="21" text-anchor="middle" fill="#444">JP1 · I2C link</text>
+  <line x1="1717" y1="916" x2="1717" y2="988" stroke="#7c3aed" stroke-width="5" marker-end="url(#aPu)"/>
+
+  <rect x="1547" y="990" width="340" height="130" rx="16" fill="#e6c4f5" stroke="#7c3aed" stroke-width="4.5"/>
+  <text x="1717" y="1036" font-size="27" font-weight="700" text-anchor="middle" fill="#222">I2C connectors</text>
+  <text x="1717" y="1074" font-size="21" text-anchor="middle" fill="#222">1 populated + 2 optional</text>
+  <text x="1717" y="1100" font-size="21" text-anchor="middle" fill="#222">positions, same bus</text>
+
+  <line x1="1717" y1="1120" x2="1717" y2="1166" stroke="#7c3aed" stroke-width="5" marker-start="url(#aPu)" marker-end="url(#aPu)"/>
+  <text x="1700" y="1150" font-size="21" text-anchor="end" fill="#6d28d9">SDA · SCL</text>
+  <rect x="1547" y="1168" width="340" height="72" rx="16" fill="#eeeeee" stroke="#9ca3af" stroke-width="4.5"/>
+  <text x="1717" y="1215" font-size="27" font-weight="700" text-anchor="middle" fill="#222">I2C host (MCU)</text>
+
+  <!-- Power bar -->
+  <rect x="40" y="1110" width="1440" height="130" rx="16" fill="#ffd6d6" stroke="#ef4444" stroke-width="4.5"/>
+  <text x="760" y="1160" font-size="28" font-weight="700" text-anchor="middle" fill="#222">Power · VCC / GND (3.3 V or 5 V)</text>
+  <text x="760" y="1198" font-size="22" text-anchor="middle" fill="#222">Supplies the divider, controller, POWER LED and I2C pull-ups</text>
+  <text x="760" y="1226" font-size="22" text-anchor="middle" fill="#222">(pull-up voltage follows VCC)</text>
+  <line x1="315" y1="1110" x2="315" y2="562" stroke="#ef4444" stroke-width="4" stroke-dasharray="9 7" marker-end="url(#aRd)"/>
+  <line x1="850" y1="1110" x2="850" y2="832" stroke="#ef4444" stroke-width="4" stroke-dasharray="9 7" marker-end="url(#aRd)"/>
+</svg>

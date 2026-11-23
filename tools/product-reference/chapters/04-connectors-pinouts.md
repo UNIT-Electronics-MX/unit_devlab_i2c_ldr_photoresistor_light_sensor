@@ -16,10 +16,10 @@ in Section 8.
 | Group | Labels in the released drawing | Purpose |
 |---|---|---|
 | Qwiic I2C connector | `GND`, `VCC`, `SDA`, `SCL` | Power and I2C bus connections |
-| Direct contacts | `VCC`, `GND`, `SIG` | Power and direct signal access |
+| Direct contacts | `VCC`, `GND`, `SIG` | Power and direct access to the analog sensor signal |
 | Service pads | `TX`, `RX`, `RST` | Pads identified in the drawing; consult the hardware design before use |
 
 The drawing marks optional 4-pin, 1 mm JST connector positions and two solder
-links. Its notes say that opening the `I2C` link disables the I2C `SIG` signal
-and opening the `SNS` link disables the LDR filter. The pinout does not
+links. Its notes read "Open the pad to disable the I²C SIG signal" for the `I2C`
+link and "Open the pad to disable LDR filter" for the `SNS` link. The pinout does not
 establish electrical limits or connector part numbers.
