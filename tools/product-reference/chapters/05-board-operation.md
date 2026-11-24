@@ -151,6 +151,7 @@ The following companion examples are provided:
 |---|---|
 | `serialLightReadInverted` | Reports `4095 - raw` with `readInvertRaw()` and `readInvertPercentage()` so that the value rises with more light |
 | `serialLightRawPlot` | Streams one raw integer per line at 115200 baud for the Arduino Serial Plotter |
+| `serialLightAveraging` | Selects the averaging window (1, 4, 8, 16, or 24 samples) with `setAveraging()` and confirms it with `readAveraging()`; type a new value in Serial Monitor at 115200 baud to change it. The module stores the window |
 | `i2c_scanner` | Scans the I2C bus at 115200 baud and prints the 7-bit address of every device that responds; a detected address only confirms that a device acknowledged, not that it is a GT36537 |
 
 ### **5.5 Upload and Serial Output** {.section-page}

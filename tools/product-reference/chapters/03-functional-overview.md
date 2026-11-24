@@ -116,11 +116,11 @@ can still be sent through `protocol()`.
 | Restore factory configuration | `0x23` | Restores default configuration; reset required | Not wrapped |
 | Read ambient-light data | `0x60` | Latest two-byte 12-bit raw sample | `readRaw()` and the functions built on it |
 | Read GT36537 sensor data | `0x80` | Same raw sample through the sensor-data namespace | Not wrapped |
-| Set ADC averaging | `0x62` | Selects 1, 4, 8, 16, or 24 samples | Not wrapped |
-| Read ADC averaging | `0x63` | Returns the active averaging setting | Not wrapped |
+| Set ADC averaging | `0x62` | Selects 1, 4, 8, 16, or 24 samples | `setAveraging()` |
+| Read ADC averaging | `0x63` | Returns the active averaging setting | `readAveraging()` |
 | Turn `BUILTIN` off/on | `0xA0` / `0xA1` | Drives the built-in indicator LOW/HIGH | `protocol().relayOff()` / `relayOn()` |
 | Pulse `BUILTIN` | `0xA2` | Starts a non-blocking timed pulse | `protocol().relayToggle()` |
-| Set/read pulse time | `0xA3` / `0xA4` | Uses 1–40 units of 25 ms | Not wrapped |
+| Set/read pulse time | `0xA3` / `0xA4` | Uses 1–40 units of 25 ms | `setPulseTime()` / `readPulseTime()` (in milliseconds) |
 
 The I2C address, averaging selection, and pulse duration are retained after a
 power cycle. Changing a stored value should be an occasional configuration
@@ -149,6 +149,10 @@ state. Readings are only available after a successful `begin` call.
 | `readPercentage(percentage)` | Raw reading as a percentage, `raw × 100 / 4095` | Library calculation on `readRaw()` |
 | `readInvertRaw(invertedValue)` | Inverted 12-bit reading, `4095 − raw` | Library calculation on `readRaw()` |
 | `readInvertPercentage(percentage)` | Inverted reading as a percentage | Library calculation on `readInvertRaw()` |
+| `setAveraging(samples, waitForFill)` | Selects the averaging window: 1, 4, 8, 16, or 24 samples; other values return `false`. Stored by the module. With `waitForFill` true (default) it waits `samples × 20 ms` so the next reading is a full average | DDP selector `0x62`, two-step write, through DevLab Interface |
+| `readAveraging(samples)` | Active averaging window | DDP selector `0x63` through DevLab Interface |
+| `setPulseTime(milliseconds)` | Built-in indicator pulse time, 25 to 1000 ms in 25 ms steps; other values return `false`. Stored by the module | DDP selector `0xA3`, two-step write, through DevLab Interface |
+| `readPulseTime(milliseconds)` | Stored pulse time in milliseconds | DDP selector `0xA4` through DevLab Interface |
 | `busReady()` | `true` if the I2C bus was started successfully | DevLab Interface state |
 | `isConnected()` | `true` if the GT36537 Device ID was verified at the configured address | DDP result |
 | `deviceInfo()` | Device ID, firmware, hardware, and protocol versions, and capability bitmap read during `begin` | DDP |
